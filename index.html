@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attimi di Benessere · Fototerapia & Rigenerazione Cellulare</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-dark: #2a1f14;
+    --brown-mid: #5c3d1e;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f7f1e8;
+    --sage: #7d9b76;
+    --sage-light: #a8c4a0;
+    --text-dark: #1e1610;
+    --text-body: #3a2e22;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--brown-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(125,155,118,0.08) 0%, transparent 60%);
+  }
+
+  .hero-tag {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .hero-title-script {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--cream);
+    line-height: 1.1;
+    text-align: center;
+    position: relative;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title-sub {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 20px;
+    position: relative;
+    animation: fadeUp 1s 0.2s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px auto;
+    position: relative;
+    animation: expand 1s 0.4s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: rgba(247,241,232,0.75);
+    text-align: center;
+    max-width: 520px;
+    line-height: 1.7;
+    position: relative;
+    animation: fadeUp 1s 0.5s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .hero-cta {
+    margin-top: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 14px 36px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: fadeUp 1s 0.7s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--brown-dark);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 90px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    padding: 90px 24px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+    max-width: 80px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--brown-dark);
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--brown-mid);
+  }
+
+  .section-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text-body);
+  }
+
+  .section-body p { margin-bottom: 20px; }
+
+  /* ── ALTERNATING BAND ── */
+  .band-dark {
+    background: var(--brown-dark);
+    color: var(--cream);
+  }
+
+  .band-sage {
+    background: #eef3ec;
+  }
+
+  .band-dark .section-title { color: var(--cream); }
+  .band-dark .section-label { color: var(--gold-light); }
+  .band-dark .section-body { color: rgba(247,241,232,0.8); }
+
+  /* ── BENEFIT GRID ── */
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .benefit-card {
+    padding: 28px 24px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(4px);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .benefit-card .check {
+    font-size: 1.2rem;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+
+  .benefit-card p {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+  }
+
+  .band-dark .benefit-card {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  .band-dark .benefit-card p { color: var(--cream); }
+
+  /* ── STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+
+  .step {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: padding-left 0.3s ease;
+  }
+
+  .step:hover { padding-left: 8px; }
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    min-width: 50px;
+  }
+
+  .step-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    margin-bottom: 6px;
+  }
+
+  .step-content p {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #6b5740;
+    line-height: 1.6;
+  }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 32px 40px;
+    background: rgba(201,168,76,0.06);
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .quote-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--brown-mid);
+  }
+
+  /* ── INFO LIST ── */
+  .info-list {
+    list-style: none;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  .info-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+
+  .band-dark .info-list li { color: rgba(247,241,232,0.8); }
+
+  /* ── VIDEO SECTION ── */
+  .video-section {
+    background: var(--brown-dark);
+    padding: 90px 24px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    group: true;
+  }
+
+  .video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .video-card:hover .video-thumb img { opacity: 0.9; }
+
+  .play-btn {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    z-index: 2;
+  }
+
+  .video-card:hover .play-btn {
+    transform: scale(1.1);
+    background: var(--gold-light);
+  }
+
+  .play-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--brown-dark);
+    margin-left: 3px;
+  }
+
+  .video-info {
+    padding: 20px 22px 24px;
+  }
+
+  .video-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .video-arrow {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: rgba(201,168,76,0.6);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease, gap 0.3s ease;
+  }
+
+  .video-card:hover .video-arrow {
+    color: var(--gold);
+    gap: 10px;
+  }
+
+  /* ── TECHNOLOGY ── */
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 10px 20px;
+    margin: 8px 4px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--brown-mid);
+  }
+
+  .band-dark .tech-badge {
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+  }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, #3d2a15 100%);
+    padding: 100px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--cream);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cta-final p {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: rgba(247,241,232,0.7);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold);
+    color: var(--brown-dark);
+    padding: 18px 48px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .wa-icon { font-size: 1.2rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1008;
+    padding: 36px 24px;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: rgba(247,241,232,0.35);
+    text-transform: uppercase;
+  }
+
+  footer span { color: rgba(201,168,76,0.5); margin: 0 8px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: 32px auto;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes expand {
+    from { opacity: 0; transform: scaleX(0); }
+    to { opacity: 1; transform: scaleX(1); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .section { padding: 60px 20px; }
+    .quote-block { padding: 24px 24px 24px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Attimi di Benessere · in collaborazione con Naturopatía Activa</div>
+  <h1 class="hero-title-script">Fototerapia<br>&amp; Rigenerazione<br>Cellulare</h1>
+  <div class="hero-title-sub">Il metodo naturale per ritrovare energia, libertà di movimento e benessere</div>
+  <div class="hero-line"></div>
+  <p class="hero-subtitle">Il tuo corpo non è rotto. Ha solo bisogno di essere riattivato nel modo giusto.</p>
+  <a href="https://wa.me/393498729155" target="_blank" class="hero-cta">
+    <span class="wa-icon">💬</span> Scrivimi su WhatsApp · 349 872 9155
+  </a>
+</header>
+
+<!-- FOTOTERAPIA: STORIA -->
+<section class="section-full" style="background: var(--cream);">
+  <div class="section fade-in">
+    <div class="section-label">Origini</div>
+    <h2 class="section-title">Quando nasce<br><em>la Fototerapia</em></h2>
+    <div class="section-body">
+      <p>La fototerapia nasce ufficialmente nei primi anni del '900 grazie a <strong>Niels Ryberg Finsen</strong>, premio Nobel nel 1903. Ma già nell'antichità Egizi, Greci e Romani usavano la luce del sole per curare il corpo, considerandola una vera forma di energia vitale.</p>
+      <p>Oggi questa conoscenza è evoluta in tecnologie avanzate che utilizzano frequenze luminose mirate per stimolare il corpo in modo naturale.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Come agisce</div>
+    <h2 class="section-title">Fototerapia &amp; <em>Dolori Muscolari</em></h2>
+    <div class="section-body">
+      <p>La fototerapia moderna agisce direttamente sulle cellule, stimolando i mitocondri (centrali energetiche), migliorando la circolazione sanguigna e riducendo l'infiammazione.</p>
+    </div>
+
+    <div class="benefit-grid">
+      <div class="benefit-card"><div class="check">✓</div><p>Riduzione del dolore muscolare</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Maggiore mobilità articolare</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Meno rigidità al mattino</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Recupero più veloce</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Metodo naturale e non invasivo</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Agisce su più livelli: fisico + energetico</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RIGENERAZIONE CELLULARE -->
+<section class="section-full band-dark">
+  <div class="section fade-in">
+    <div class="section-label">Il processo vitale</div>
+    <h2 class="section-title" style="color:var(--cream);">Rigenerazione<br><em>Cellulare</em></h2>
+    <div class="section-body">
+      <p>Il nostro corpo è programmato per rigenerarsi. Ogni giorno milioni di cellule muoiono e milioni si rigenerano. Il problema? Dopo i 40 anni questo processo rallenta drasticamente.</p>
+    </div>
+
+    <ul class="info-list">
+      <li>Dolori cronici e infiammazioni persistenti</li>
+      <li>Perdita di elasticità muscolare e articolare</li>
+      <li>Stanchezza continua e difficoltà di recupero</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <div class="section-label">I benefici</div>
+    <h2 class="section-title" style="color:var(--cream); margin-top:8px;">Riattiva<br><em>il tuo corpo</em></h2>
+
+    <div class="benefit-grid">
+      <div class="benefit-card"><div class="check">✓</div><p>Più energia durante la giornata</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Miglior recupero fisico</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Pelle più luminosa e compatta</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Sistema immunitario più forte</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Riduzione dolori cronici</p></div>
+      <div class="benefit-card"><div class="check">✓</div><p>Miglior tono muscolare</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MERIDIANI -->
+<section class="section-full band-sage">
+  <div class="section fade-in">
+    <div class="section-label">Medicina tradizionale cinese</div>
+    <h2 class="section-title">I Meridiani<br><em>energetici</em></h2>
+    <div class="section-body">
+      <p>Secondo la medicina tradizionale cinese, il corpo è attraversato da meridiani energetici: canali in cui scorre l'energia vitale. Quando l'energia si blocca, compaiono dolore, rigidità e squilibrio.</p>
+      <p>La fototerapia può essere applicata in punti specifici per stimolare i meridiani, riattivare il flusso energetico e riequilibrare il corpo dall'interno, con risultati di leggerezza, rilassamento profondo e miglioramento generale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CELLULE STAMINALI -->
+<section class="section-full" style="background: var(--cream);">
+  <div class="section fade-in">
+    <div class="section-label">Il segreto della rigenerazione</div>
+    <h2 class="section-title">Cellule Staminali<br><em>&amp; Fototerapia</em></h2>
+    <div class="section-body">
+      <p>Le cellule staminali sono il sistema di autoriparazione naturale del nostro organismo: possono trasformarsi in altri tipi di cellule, riparare tessuti danneggiati e rigenerare organi e strutture corporee.</p>
+      <p>Quando siamo giovani produciamo e utilizziamo queste cellule in modo efficiente. Con l'età la produzione diminuisce, l'attività rallenta e la capacità di riparazione si riduce. La fototerapia può aiutare il corpo a riattivare i suoi processi naturali di rigenerazione, stimolando le cellule e creando le condizioni ideali per la loro azione — senza introdurre nulla dall'esterno.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Approccio integrato</div>
+    <h2 class="section-title" style="margin-top:8px;"><em>Fisico · Energetico<br>· Cellulare</em></h2>
+    <div class="section-body">
+      <p>Unendo fototerapia, stimolazione dei meridiani e attivazione naturale del corpo, si ottiene un approccio completo. Non stai coprendo il dolore: stai lavorando sulla causa profonda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPIO BIOENERGETICO -->
+<section class="section-full band-dark">
+  <div class="section fade-in">
+    <div class="section-label">Tecnologia bioenergetica</div>
+    <h2 class="section-title" style="color:var(--cream);">Principio d'azione<br><em>bioenergetico</em></h2>
+    <div class="section-body">
+      <p>I dispositivi LifeWave® offrono una modalità unica, sicura e innovativa per interagire con l'organismo attraverso la luce, senza effetti collaterali e senza somministrazione di farmaci. La combinazione tra nanotecnologia, agopuntura e fototerapia passiva rappresenta un passo importante verso una medicina integrata rispettosa della fisiologia e dell'energia del corpo umano.</p>
+      <p>I cristalli del cerotto, quando attivati dalla radiazione infrarossa naturale del corpo, entrano in risonanza generando impulsi elettromagnetici a bassa intensità che stimolano i punti di agopuntura, riallineano le frequenze energetiche degli organi, favoriscono il ripristino del flusso energetico nei meridiani e potenziano la risposta biologica in modo non invasivo.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Sicurezza &amp; conformità</div>
+    <ul class="info-list" style="margin-top: 16px;">
+      <li>Non contengono metalli, batterie, magneti o agenti transdermici</li>
+      <li>Registrati presso la FDA (Food and Drug Administration)</li>
+      <li>Conformi agli standard GMP (Good Manufacturing Practices)</li>
+      <li>Conformi ai requisiti QSR, equivalente alla ISO 13485</li>
+      <li>Contengono solo sostanze approvate dalla FDA secondo il titolo 21 CFR</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ANIMALI & PLACEBO -->
+<section class="section-full band-sage">
+  <div class="section fade-in">
+    <div class="section-label">Evidenza oltre il placebo</div>
+    <h2 class="section-title">Applicazione<br><em>negli animali</em></h2>
+    <div class="section-body">
+      <p>Uno degli argomenti più interessanti a favore della tecnologia LifeWave è la sua efficacia osservata anche negli animali, dove per definizione non può esistere l'effetto placebo cosciente. Cani, gatti e cavalli trattati con cerotti LifeWave mostrano miglioramenti evidenti e difficilmente attribuibili a suggestione.</p>
+      <p>Numerosi professionisti nel campo della medicina veterinaria olistica e dell'addestramento animale riportano:</p>
+    </div>
+
+    <ul class="info-list">
+      <li>Riduzione dell'irrequietezza o dello stress comportamentale</li>
+      <li>Recupero post-operatorio più rapido</li>
+      <li>Miglioramento della mobilità articolare</li>
+      <li>Miglioramento nella performance sportiva, soprattutto nei cavalli da competizione</li>
+      <li>Supporto nelle sindromi dolorose croniche o nell'invecchiamento</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <div class="section-body" style="margin-top:0;">
+      <p>La fotobiomodulazione è già ampiamente utilizzata in ambito veterinario con solide basi scientifiche, mostrando incremento della produzione di ATP nei mitocondri, riduzione dell'infiammazione e stimolazione della rigenerazione tissutale. Queste osservazioni forniscono una base fisiologica credibile anche per la tecnologia LifeWave.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGIA LIFEWAVE -->
+<section class="section-full" style="background: var(--cream);">
+  <div class="section fade-in">
+    <div class="section-label">La tecnologia</div>
+    <h2 class="section-title">LifeWave X39™</h2>
+    <div class="section-body">
+      <p>LifeWave X39™ è il cerotto di fototerapia più avanzato al mondo, progettato per attivare le cellule staminali del tuo corpo attraverso la fotobiomodulazione.</p>
+    </div>
+
+    <div style="margin-top: 28px;">
+      <span class="tech-badge">Tecnologia brevettata</span>
+      <span class="tech-badge">Non invasiva</span>
+      <span class="tech-badge">Naturale</span>
+      <span class="tech-badge">Senza farmaci</span>
+      <span class="tech-badge">Certificata FDA</span>
+    </div>
+  </div>
+</section>
+
+<!-- COME INIZIARE -->
+<section class="section-full band-dark">
+  <div class="section fade-in">
+    <div class="section-label">Il tuo percorso</div>
+    <h2 class="section-title" style="color:var(--cream);">Come<br><em>iniziare</em></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3 style="color:var(--cream);">Ascolta il tuo corpo</h3>
+          <p style="color:rgba(247,241,232,0.65);">Dove senti dolore? Dove senti stanchezza? Il punto di partenza sei tu.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3 style="color:var(--cream);">Inizia con costanza</h3>
+          <p style="color:rgba(247,241,232,0.65);">La continuità è la chiave: i risultati si costruiscono nel tempo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3 style="color:var(--cream);">Segui un metodo</h3>
+          <p style="color:rgba(247,241,232,0.65);">Non improvvisare: ogni punto ha una funzione specifica.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3 style="color:var(--cream);">Fatti guidare</h3>
+          <p style="color:rgba(247,241,232,0.65);">Un percorso guidato accelera i risultati e ti aiuta ad evitare errori.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZA -->
+<section class="section-full" style="background: var(--cream);">
+  <div class="section fade-in">
+    <div class="section-label">Una storia reale</div>
+    <div class="quote-block">
+      <p>Non riuscivo più a muovermi come prima. Dolori continui, soprattutto la mattina. Dopo aver iniziato la fototerapia, qualcosa è cambiato. Poco alla volta… mi sono sentita più leggera, più libera. Oggi ho ritrovato energia… e soprattutto me stessa.</p>
+    </div>
+    <p style="font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em; color:var(--gold); text-transform:uppercase; font-weight:400;">Questo è quello che succede quando il corpo viene riattivato.</p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label fade-in" style="color:var(--gold);">Approfondisci</div>
+    <h2 class="section-title fade-in" style="color:var(--cream); max-width:900px;">Guarda i<br><em>video</em></h2>
+  </div>
+
+  <div class="video-grid">
+    <a href="https://youtu.be/nPo9Y8u3WJk?is=wvfKlf-OkOKwX6gB" target="_blank" rel="noopener noreferrer" class="video-card fade-in">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/nPo9Y8u3WJk/maxresdefault.jpg" alt="Video fototerapia 1" onerror="this.style.opacity='0'">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-label">Video · Approfondimento</div>
+        <div class="video-title">Fototerapia &amp; LifeWave X39™ — Come funziona</div>
+        <div class="video-arrow">Guarda su YouTube →</div>
+      </div>
+    </a>
+
+    <a href="https://youtu.be/Dq_xQ7aCN8o?is=YsNBlNSBQGekSGmk" target="_blank" rel="noopener noreferrer" class="video-card fade-in">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/Dq_xQ7aCN8o/maxresdefault.jpg" alt="Video fototerapia 2" onerror="this.style.opacity='0'">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-label">Video · Testimonianze</div>
+        <div class="video-title">Rigenerazione Cellulare — Risultati reali</div>
+        <div class="video-arrow">Guarda su YouTube →</div>
+      </div>
+    </a>
+
+    <a href="https://youtu.be/C3do-ituBHg?is=e-wIGxtxIh-F0Xuc" target="_blank" rel="noopener noreferrer" class="video-card fade-in">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/C3do-ituBHg/maxresdefault.jpg" alt="Video fototerapia 3" onerror="this.style.opacity='0'">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-label">Video · Approfondimento</div>
+        <div class="video-title">Fototerapia &amp; Benessere — Scopri di più</div>
+        <div class="video-arrow">Guarda su YouTube →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section class="cta-final">
+  <h2>È il momento di<br>scegliere te stessa</h2>
+  <p>Non aspettare che il dolore aumenti. Inizia oggi a prenderti cura di te con un metodo naturale, guidato, che funziona.</p>
+  <a href="https://wa.me/393498729155" target="_blank" class="cta-btn">
+    <span class="wa-icon">💬</span> Scrivimi su WhatsApp
+  </a>
+  <p style="margin-top:20px; font-size:0.85rem; opacity:0.5;">349 872 9155 · in collaborazione con Naturopatía Activa</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Attimi di Benessere <span>·</span> Fototerapia &amp; Rigenerazione Cellulare <span>·</span> in collaborazione con Naturopatía Activa
+</footer>
+
+<script>
+  // Scroll-triggered fade in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
